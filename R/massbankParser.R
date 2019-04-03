@@ -1,6 +1,8 @@
-file <- "C:/Daten/R scripts/MSnio/inst/spectra/massbank/EA016614.txt"
+file <- "inst/spectra/massbank/EA016614.txt"
 lines_test <- readLines(file)
-schema <- yaml.load_file("C:/Daten/R scripts/MSnio/inst/schemas/schema_massbank.yaml")
+schema <- yaml.load_file("inst/schemas/schema_massbank_auto.yaml")
+fields <- yaml.load_file("inst/schemas/schema_massbank_auto.yaml")
+
 
 parserMassBank <- function(lines, schema)
 {
