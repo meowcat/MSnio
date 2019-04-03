@@ -50,9 +50,6 @@
 - field: spectrum_quality
   format: double
   cardinality: '1'
-- field: pubmed
-  format: string
-  cardinality: '1'
 - field: name
   format: string
   cardinality: 'n'
@@ -82,7 +79,7 @@
 - field: inchi_aux
   format: string
   cardinality: '1'
-- field: database_id
+- field: database_identifier
   format: string
   cardinality: 'kvp'
 - field: inchikey
