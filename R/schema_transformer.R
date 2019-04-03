@@ -1,25 +1,10 @@
+#' @import MSnbase
+#' @import yaml
+
 library(yaml)
 
-schema <- yaml.load_file("schema_test.yaml")
 
-
-library(MSnbase)
-data("itraqdata")
-
-specs <- as.list(assayData(itraqdata))
-
-sp <- specs[[4]]
-
-# todo: metadata<- etc
-sp@metadata <- list(
-  name = "Compound",
-  compound_class = "natural product",
-  formula = "C6H12O6",
-  cas = c("666-66-6", "7777-77-7", "8888-88-8"),
-  not_mapped = "not_mapped"
-)
-
-#
+#' @export
 schema_export <- function(data, schema, fill = TRUE)
 {
   recurse <- function(entry)
@@ -45,13 +30,6 @@ schema_export <- function(data, schema, fill = TRUE)
   recurse(schema)
 }
 
-metadata_identity <- schema_export(sp@metadata, schema)
-metadata_identity <- schema_export(sp@metadata, schema, fill=FALSE)
-
-schema_tree <- yaml.load_file("schema_tree.yaml")
-metadata_tree <- schema_export(sp@metadata, schema_tree)
-metadata_tree <- schema_export(sp@metadata, schema_tree, fill=FALSE)
-
 .recurse_access <- function(data, trace)
 {
   if(length(trace) == 0)
@@ -64,13 +42,13 @@ metadata_tree <- schema_export(sp@metadata, schema_tree, fill=FALSE)
     else
       return(NULL)
 }
-
-.recurse_access(schema_tree, c('descriptors','formula'))
-.recurse_access(schema_tree, c('descriptors','not_there'))
-.recurse_access(schema_tree, c('descriptors','formula', 'too_far'))
-try(.recurse_access(schema_tree, c()))
-.recurse_access(schema_tree, c('not_there'))
-.recurse_access(schema_tree, c('not_there', 'not_there_either'))
+# 
+# .recurse_access(schema_tree, c('descriptors','formula'))
+# .recurse_access(schema_tree, c('descriptors','not_there'))
+# .recurse_access(schema_tree, c('descriptors','formula', 'too_far'))
+# try(.recurse_access(schema_tree, c()))
+# .recurse_access(schema_tree, c('not_there'))
+# .recurse_access(schema_tree, c('not_there', 'not_there_either'))
 
 
 #
@@ -107,6 +85,3 @@ schema_import <- function(data, schema, fill=TRUE)
   return(as.list(data_env))
 }
 
-
-metadata_identity_imp <- schema_import(sp@metadata, schema)
-metadata_tree_imp <- schema_import(metadata_tree, schema_tree)
