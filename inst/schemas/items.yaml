@@ -4,7 +4,7 @@
 - field: title
   format: string
   cardinality: '1'
-  ontology: MS_1000796
+  ontology: MS:1000796
 - field: record_date
   format: date
   cardinality: '1'
@@ -13,7 +13,7 @@
   cardinality: 'n'
   ontology:
   - IAO_0000609
-  - MS_1002034
+  - MS:1002034
 - field: license
   format: string
   cardinality: '1'
@@ -82,58 +82,12 @@
 - field: inchi_aux
   format: string
   cardinality: '1'
-- field: cas
+- field: database_id
   format: string
-  cardinality: 'n'
-  ontology:
-  - MSIO_0000080
-  - CHEMINF_000446
-- field: chebi
-  format: string
-  cardinality: 'n'
-  ontology:
-  - MSIO_0000080
-  - CHEMINF_000407
-- field: chempdb
-  format: string
-  cardinality: 'n'
-  ontology: MSIO_0000080
-- field: chemspider
-  format: string
-  cardinality: 'n'
-  ontology:
-  - MSIO_0000080
-  - CHEMINF_000405
+  cardinality: 'kvp'
 - field: inchikey
   format: string
   cardinality: '1'
-  ontology: MSIO_0000080
-- field: kegg
-  format: string
-  cardinality: 'n'
-  ontology:
-  - MSIO_0000080
-  - CHEMINF_000409
-- field: knapsack
-  format: string
-  cardinality: 'n'
-  ontology: MSIO_0000080
-- field: lipidbank
-  format: string
-  cardinality: 'n'
-  ontology: MSIO_0000080
-- field: lipidmaps
-  format: string
-  cardinality: 'n'
-  ontology:
-  - MSIO_0000080
-  - CHEMINF_000564
-- field: pubchem
-  format: string
-  cardinality: 'n'
-  ontology:
-  - MSIO_0000080
-  - CHEMINF_000140
 - field: organism_name
   format: string
   cardinality: '1'
@@ -146,7 +100,7 @@
 - field: sample
   format: string
   cardinality: '1'
-  ontology: MS_1000457
+  ontology: MS:1000457
 - field: instrument
   format: string
   cardinality: '1'
@@ -186,7 +140,7 @@
 - field: maldi_laser
   format: string
   cardinality: '1'
-  ontology: MS_1000840
+  ontology: MS:1000840
 - field: maldi_matrix
   format: string
   cardinality: '1'
@@ -194,7 +148,7 @@
 - field: mass_accuracy
   format: double
   cardinality: '1'
-  ontology: MS_1000014
+  ontology: MS:1000014
 - field: gc_reagent_gas
   format: string
   cardinality: '1'
@@ -255,7 +209,7 @@
 - field: base_peak
   format: ''
   cardinality: ''
-  ontology: MS_1000504
+  ontology: MS:1000504
 - field: derivative_form
   format: ''
   cardinality: ''
@@ -263,9 +217,6 @@
   format: ''
   cardinality: ''
 - field: derivative_type
-  format: ''
-  cardinality: ''
-- field: ''
   format: ''
   cardinality: ''
 - field: precursor_mz
@@ -276,9 +227,6 @@
   format: string
   cardinality: ''
   ontology: MS:1000353
-- field: ''
-  format: ''
-  cardinality: ''
 - field: isolation_window_target_mz
   format: double
   cardinality: ''
@@ -294,20 +242,14 @@
 - field: precursor_ion_purity
   format: double
   cardinality: ''
-- field: ''
-  format: ''
-  cardinality: ''
-- field: software
+- field: processing
   format: string
-  cardinality: ''
+  cardinality: 'kvp'
   ontology: MS:1000531
 - field: splash
   format: string
-  cardinality: ''
+  cardinality: 1
   ontology: MS:1002599
-- field: ''
-  format: ''
-  cardinality: ''
 - field: num_peaks
   format: integer
   cardinality: '1'
