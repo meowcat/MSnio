@@ -1,0 +1,148 @@
+	suggested common name in R 	format		MSIO	CHEMINF Ontology Term	Mass spectrometry Ontology Term	other ontologies	MassBank	NIST msp	RIKEN msp	GNPS mgf	standard mgf	
+				https://www.ebi.ac.uk/ols/ontologies/msio	https://www.ebi.ac.uk/ols/ontologies/cheminf	https://www.ebi.ac.uk/ols/ontologies/ms		https://github.com/MassBank/MassBank-data/blob/master/Eawag/EA000403.txt	http://mona.fiehnlab.ucdavis.edu/rest/downloads/retrieve/925d5101-828d-49cc-8ce7-afa2a4b33427	http://prime.psc.riken.jp/Metabolomics_Software/MS-DIAL/MSMS-Neg-CASMI2016.msp	ftp://ccms-ftp.ucsd.edu/Spectral_Libraries/GNPS-NIH-CLINICALCOLLECTION2.mgf	http://www.matrixscience.com/help/data_file_help.html	
+									https://www.nist.gov/sites/default/files/documents/srd/NIST1aVer22Man.pdf see "NIST Text Format of Individual Spectra" on "Page 51" and "Tags in Comment Constraint for MS/MS Text Information" on "Page 68"				
+									TODO: 'Synon: $:XX'; 'Comments' often comprises much additional fields	Should be complete	Should be complete		
+record metadata	accession	string	1					ACCESSION	DB#		SPECTRUMID		
+	title	string	1			MS_1000796 (Spectrum title)		RECORD TITLE			TITLE		
+	record_date	date	1					DATE					
+	authors	string	n		IAO_0000609 (author summary section)	MS_1002034 (first author)		AUTHORS					
+	license	string	1					LICENSE					
+	copyright	string	1		IAO_0000330 (copyright section)			COPYRIGHT					
+	publication	string	1		IAO_0000311 (Publication)			PUBLICATION					
+	comment	string	n			PEFF_0001033 (Comment)		COMMENT		Comment			
+	file_name	string	1								FILENAME		
+	scans	integer	n								SCANS		
+	seq	string	1								SEQ		
+	principal_investigator	string	n								PI		
+	data_collector	string	n								DATACOLLECTOR		
+	submit_user	string	n								SUBMITUSER		
+	spectrum_quality	double	1								LIBRARYQUALITY		
+	pubmed	string	1								PUBMED		
+chemical information	name	string	n		CHEMINF_000044 (preferred name)			CH$NAME	Name	NAME	NAME		
+	compound_class	string	n					CH$COMPOUND_CLASS		Ontology			
+	formula	string	1		CHEMINF_000042 (molecular formula)			CH$FORMULA	Formula	FORMULA			
+	exact_mass	double	1		CHEMINF_000217 (exact mass descriptor)			CH$EXACT_MASS	ExactMass				
+	nominal_mass	integer	1						MW				
+	smiles	string	1		CHEMINF_000018 (SMILES descriptor)			CH$SMILES		SMILES	SMILES		
+	inchi	string	1		CHEMINF_000113 (InChI descriptor)			CH$IUPAC			INCHI		
+	inchi_aux	string	1								INCHIAUX		
+	cas	string	n	MSIO_0000080 (metabolite identifier)	CHEMINF_000446 (CAS registry number)			CH$LINK:CAS					
+	chebi	string	n	MSIO_0000080 (metabolite identifier)	CHEMINF_000407 (ChEBI identifier)			CH$LINK:CHEBI					
+	chempdb	string	n	MSIO_0000080 (metabolite identifier)				CH$LINK:CHEMPDB					
+	chemspider	string	n	MSIO_0000080 (metabolite identifier)	CHEMINF_000405 (ChemSpider identifier)			CH$LINK:CHEMSPIDER					
+	inchikey	string	1	MSIO_0000080 (metabolite identifier)				CH$LINK:INCHIKEY	InChIKey	INCHIKEY	INCHIKEY		
+	kegg	string	n	MSIO_0000080 (metabolite identifier)	CHEMINF_000409 (KEGG identifier)			CH$LINK:KEGG					
+	knapsack	string	n	MSIO_0000080 (metabolite identifier)				CH$LINK:KNAPSACK					
+	lipidbank	string	n	MSIO_0000080 (metabolite identifier)				CH$LINK:LIPIDBANK					
+	lipidmaps	string	n	MSIO_0000080 (metabolite identifier)	CHEMINF_000564 (LipidMaps identifier)			CH$LINK:LIPIDMAPS					
+	pubchem	string	n	MSIO_0000080 (metabolite identifier)	CHEMINF_000140 (PubChem compound identifier (CID))			CH$LINK:PUBCHEM					
+sample information	organism_name	string	1					SP$SCIENTIFIC_NAME			ORGANISM		
+	organism_lineage	string	1					SP$LINEAGE					
+	sample_link	string	1					SP$LINK					
+	sample	string	1			MS_1000457 (sample)		SP$SAMPLE					
+analytical chemistry, MS	instrument	string	1			MS:100031 (instrument model)		AC$INSTRUMENT	Instrument		INSTRUMENT		
+	instrument_type	string	1					AC$INSTRUMENT_TYPE	Instrument_type	INSTRUMENTTYPE	SOURCE_INSTRUMENT		
+	ms_level	integer	1			MS:1000511 (ms level)		AC$MASS_SPECTROMETRY:MS_TYPE	Spectrum_type		MSLEVEL		
+	ion_mode	string	1			MS:1000465 (scan polarity)		AC$MASS_SPECTROMETRY:ION_MODE	Ion_mode	IONMODE	IONMODE		
+	charge	integer	1			MS:10000041 (charge stage)			Synon: $:21 Charge		CHARGE		
+	collision_energy	double	1			MS:1000045 (collision energy)		AC$MASS_SPECTROMETRY:COLLISION_ENERGY	Collision_energy	COLLISIONENERGY			
+	collision_gas	string	1			MS:1000419 (collision gas)		AC$MASS_SPECTROMETRY:COLLSION_GAS					
+	collection_date	date	1					AC$MASS_SPECTROMETRY:DATE					
+	desolvation_gas	string	1					AC$MASS_SPECTROMETRY:DESOLVATION_GAS_FLOW					
+	gc_ionization_energy	integer?	1					AC$MASS_SPECTROMETRY:IONIZATION_ENERGY					
+	maldi_laser	string	1			MS_1000840 (laser)		AC$MASS_SPECTROMETRY:LASER					
+	maldi_matrix	string	1				CHMO:0002743 (matrix)	AC$MASS_SPECTROMETRY:MATRIX					
+	mass_accuracy	double	1			MS_1000014 (accuracy)		AC$MASS_SPECTROMETRY:MASS_ACCURACY					
+	gc_reagent_gas	string	1					AC$MASS_SPECTROMETRY:REAGENT_GAS					
+	scanning	string	1					AC$MASS_SPECTROMETRY:SCANNING					
+	ion_mobility_type	string	1										
+	ion_mobility_voltage	double	1										
+	ion_mobility_drift_gas	string	1										
+analytical chemistry, chromatography	capillary_voltage	double	1				CHMO:0002792 (capillary voltage)	AC$CHROMATOGRAPHY:CAPILLARY_VOLTAGE					
+	column_name	string	1	MSIO_0000160 (chromatography column)			CHMO:0000997 (chromatography column)	AC$CHROMATOGRAPHY:COLUMN_NAME					
+	column_temperature	double	1					AC$CHROMATOGRAPHY:COLUMN_TEMPERATURE					
+	gradient	string	1	MSIO_0000110 (elution program)				AC$CHROMATOGRAPHY:FLOW_GRADIENT					
+	flow_rate	string	1					AC$CHROMATOGRAPHY:FLOW_RATE					
+	retention_time	double	1	MSIO_0000190 (retention time)		MS:1000894 (retention time)		AC$CHROMATOGRAPHY:RETENTION_TIME		RETENTIONTIME			
+	solvent	string	n	MSIO_0000037 (solvent)				AC$CHROMATOGRPAHY:SOLVENT					
+analytical chemistry, ion mobility	drift_time	double	1			MS:1002476 (ion mobility drift time)							
+	inverse_reduced_mobility	double	1			MS:1002815 (inverse reduced ion mobility)							
+	collsional_cross_section	double	1			MS:1002954 (collisional cross sectional area)							
+	base_peak					MS_1000504 (base peak m/z)		MS$FOCUSED_ION:BASE_PEAK					
+	derivative_form							MS$FOCUSED_ION:DERIVATIVE_FORM					
+	derivative_mass							MS$FOCUSED_ION:DERIVATIVE_MASS					
+	derivative_type							MS$FOCUSED_ION:DERIVATIVE_TYPE					
+								MS$FOCUSED_ION:ION_TYPE					
+	precursor_mz	double				MS:1002234 (selected precursor m/z)		MS$FOCUSED_ION:PRECURSOR_M/Z	PrecursorMZ	PRECURSORMZ	PEPMASS		
+	precursor_adduct	string				MS:1000353 (adduct ion)		MS$FOCUSED_ION:PRECURSOR_TYPE	Precursor_type	PRECURSORTYPE			
+													
+	isolation_window_target_mz	double				MS:1000827 (isolation window target m/z)							
+	isolation_window_lower_offset	double				MS:1000828 (isolation window lower offset)							
+	isolation_window_upper_offset	double				MS:1000829 (isolation window upper offset)							
+	precursor_ion_purity	double											
+processing								MS$DATA_PROCESSING:FIND_PEAK					
+	software	string				MS:1000531 (software)		MS$DATA_PROCESSING:WHOLE					
+spectrum	splash	string				MS:1002599 (splash key)		PK$SPLASH					
+								PK$ANNOTATION					
+	num_peaks	integer	1					PK$NUM_PEAK	Num Peaks	Num Peaks			
+								PK$PEAK					
+													
+									Synon: $:01 Compound_type [Compound type]			ACCESSION	Database entries to be searched
+									Synon: $:1 [Compound type] (sic!)			CHARGE	Peptide charge
+									Synon: $:02 Ion_name			CLE	Enzyme
+									Synon: $:0a, $:a [Spectrum type]. Duplicates are possible, and in the export will be shown as $:0a, or $:a.			COM	Search title
+									Synon: $:6 Instrument_type			COMP	Amino acid composition
+									Synon: $:7 Instrument			CUTOUT	Precursor removal
+									Synon: $:08 Special_fragmentation			DB	Database
+									Synon: $:09 Sample_inlet			DECOY	Perform decoy search
+									Synon: $:10 Ionization			ERRORTOLERANT	Error tolerant
+									Synon: $:30 MSn_pathway			ETAG	Error tolerant sequence tag
+									Synon: $:12 Collision_gas			FORMAT	MS/MS data file
+									Synon: $:13 Pressure			FRAMES	NA translation
+									Synon: $:14 Mass_range			INSTRUMENT	MS/MS ion series
+									Synon: $:15 Maximum_intensity			IT_MODS	Variable Mods
+									Synon: $:16 In-source_voltage			ITOL	Fragment ion tol.
+									Synon: $:19 Ion_formula			ITOLU	Units for ITOL
+									Synon: $:20 Ion_MW			LIBRARY_SEARCH	Search includes spectral libraries
+												LOCUS	Hierarchical scan range identifier
+									Synon: $:22 Salt			MASS	Mono. or average
+									Synon: $:23 Known_impurity			MODS	Fixed Mods
+									Synon: $:24 Related_CAS#			MULTI_SITE_MODS	Allow two modifications at a single site
+									Synon: $:25 Salt/mix_CAS#			PEP_ISOTOPE_ERROR	Misassigned 13C
+									Synon: $:26 Peptide_sequence			PEPMASS	Peptide mass
+									Synon: $:27 Peptide_mods			PFA	Partials
+									Synon: $:28 InChIKey			PRECURSOR	Precursor m/z
+												QUANTITATION	Quantitation method
+									Comments: aux			RAWFILE	Raw file identifier
+									Comments: charge			RAWSCANS	Native scan range identifiers
+									Comments: collision_energy			REPORT	Maximum hits
+									Comments: collision_gas			REPTYPE	Type of report
+									Comments: compound_type			RTINSECONDS	Retention time or range (in seconds)
+									Comments: cone_voltage			SCANS	Scan number or range
+									Comments: inchikey			SEARCH	Type of search
+									Comments: in-source_voltage			SEG	Protein mass (kDa)
+									Comments: instrument			SEQ	Amino acid sequence
+									Comments: instrument_type			TAG	Sequence tag
+									Comments: ion_formula			TAXONOMY	Taxonomy
+									Comments: ion_mode			TITLE	Query title
+									Comments: ion_mw			TOL	Peptide mass tol.
+									Comments: ion_name			TOLU	Units for TOL
+									Comments: ionization			USER00 to USER12	
+									Comments: known_impurity			USEREMAIL	User email
+									Comments: mass_range			USERNAME	User name
+									Comments: maximum_intensity				
+									Comments: msn_pathway				
+									Comments: notes				
+									Comments: peptide_mods				
+									Comments: peptide_sequence				
+									Comments: precursor_m/z				
+									Comments: precursor_type				
+									Comments: pressure				
+									Comments: related_cas#				
+									Comments: retention_index				
+									Comments: ri				
+									Comments: salt				
+									Comments: salt/mix_cas#				
+									Comments: sample_inlet				
+									Comments: special_fragmentation				
+									Comments: spectrum_type				
