@@ -51,14 +51,13 @@ schema_export <- function(data, schema, fill = TRUE)
 # .recurse_access(schema_tree, c('not_there', 'not_there_either'))
 
 
-#
+#' @export
 schema_import <- function(data, schema, fill=TRUE)
 {
   data_env <- new.env()
   
   recurse <- function(entry, trace = c())
   {
-    print(trace)
     if(is.list(entry))
     {
       l <- lapply(
@@ -73,7 +72,6 @@ schema_import <- function(data, schema, fill=TRUE)
     }
     else
     {
-      print('!')
       entry_data <- .recurse_access(data, c(trace, names(entry)))
       if(!is.null(entry_data))
         data_env[[entry]] <- entry_data
