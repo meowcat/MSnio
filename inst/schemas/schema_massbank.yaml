@@ -1,0 +1,38 @@
+msnio_schema_definition: "0.1"
+metadata:
+  - field: ACCESSION
+    entries: 1
+    type: string
+  - field: RECORD_TITLE
+    entries: 1
+    type: string
+  - field: COMMENT
+    entries: n
+    type: kvp
+  - field: "CH$NAME"
+    entries: n
+    type: string
+  - field: "AC$MASS_SPECTROMETRY"
+    node:
+    - field: MS_TYPE
+      entries: 1
+      type: string
+    - field: ION_MODE
+      entries: 1
+      type: string
+    - field: COLLISION_ENERGY
+      entries: 1
+      type: string
+  - field: "MS$DATA_PROCESSING"
+    entries: n
+    type: string
+
+parser:
+  blocks:
+    - "AC$MASS_SPECTROMETRY"
+    - "AC$CHROMATOGRAPHY"
+    - "AC$FOCUSED_ION"
+  tables:
+    - "PK$ANNOTATION"
+    - "PK$PEAK"
+    
