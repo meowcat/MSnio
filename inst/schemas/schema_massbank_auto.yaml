@@ -1,7 +1,7 @@
 metadata:
 - field: ACCESSION
   map: accession
-- field: RECORD TITLE
+- field: RECORD_TITLE
   map: title
 - field: DATE
   map: record_date

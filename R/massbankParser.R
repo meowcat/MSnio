@@ -140,6 +140,7 @@ applySchema <- function(record, schema, parser)
     #field <- .recurse_access(record, trace)
     #field <- data[[element$field]]
     field <- unlist(data[names(data) == element$field])
+    
     # consider removing this, so names would be downported into the arrays. 
     # Maybe even put the trace here
     names(field) <- NULL
@@ -166,28 +167,40 @@ renderSchema <- function(record, schema, parser)
   # for every element in schema$metadata:
   # when reading, first apply rule, then recurse nodes,
   # here we are writing, so first recurse nodes, then apply rule
-
+  
+  # we need a helper to fix the naming, currently, because I have no better idea
+  name_helper <- "&"
+  
   .recurseFields <- function(element, data)
   {
-    #trace <- c(trace, element$field)
-    #field <- .recurse_access(record, trace)
+    # access the field in the built record (now no multiselection,
+    # since it was rendered into one element)
     field <- data[[element$field]]
-    #field <- unlist(data[names(data) == element$field])
+    if(length(field) == 0)
+      return(NULL)
 
     if(!is.null(element$node))
     {
       field <- lapply(element$node, .recurseFields, field)
       names(field) <- unlist(lapply(element$node, `[[`, 'field'))
       field <- field[!unlist(lapply(field, is.null))]
+      field <- do.call(c, c(field, use.names=FALSE))
+      #field <- unlist(field)
     } 
     if(!is.null(element$rule))
-      field <- parser$rules_render[[element$rule]](field)
-    return(unlist(field))
+      field <- unlist(parser$rules_render[[element$rule]](field))
+    # the following "default rule" actually reverses the behaviour of 
+    # "field <- unlist(data[names(data) == element$field])"
+    # in the parser step
+    names(field) <- rep(element$field,length(field))
+    return(field)
   }
   schema_root <- schema$metadata
   record <- lapply(schema_root, .recurseFields, record)
   names(record) <- unlist(lapply(schema_root, `[[`, 'field'))
   record <- record[!unlist(lapply(record, is.null))]
+  record <- as.list(do.call(c, c(record, use.names=FALSE)))
+  
   return(record)
 }
 
