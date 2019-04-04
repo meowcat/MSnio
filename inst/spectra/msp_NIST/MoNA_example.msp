@@ -1,0 +1,137 @@
+Name: Chelidonin
+Synon: $:00in-source
+DB#: SMI00001
+InChIKey: GHKISGDRQRSCII-UHFFFAOYSA-N
+Precursor_type: [M+H]+
+Spectrum_type: MS2
+PrecursorMZ: 354.1345
+Instrument_type: LC-ESI-QTOF
+Instrument: Bruker micrOTOF-Q
+Ion_mode: P
+Collision_energy: 15 eV
+Formula: C20H19NO5
+MW: 353
+ExactMass: 353.12632270800003
+Comments: "SMILES=CN1CC2=C(C=CC3=C2OCO3)[C@@H]4[C@H]1C5=CC6=C(C=C5C[C@@H]4O)OCO6" "pubchem cid=10147" "chemspider=9741" "InChI=InChI=1S/C20H19NO5/c1-21-7-13-11(2-3-15-20(13)26-9-23-15)18-14(22)4-10-5-16-17(25-8-24-16)6-12(10)19(18)21/h2-3,5-6,14,18-19,22H,4,7-9H2,1H3" "computed SMILES=OC1CC2=CC=3OCOC3C=C2C4N(C)CC5=C6OCOC6=CC=C5C14" "accession=SMI00001" "author=S. Neumann: IPB-Halle, Germany & E. Schymanski: Eawag, Switzerland" "license=CC BY" "copyright=CASMI2012" "publication=Schymanski, E.; Neumann, S. The Critical Assessment of Small Molecule Identification (CASMI): Challenges and Solutions. Metabolites 2013, 3 (3), 517â€“38. DOI:10.3390/metabo3030517" "exact mass=353.1272" "instrument=Bruker micrOTOF-Q" "instrument type=LC-ESI-QTOF" "ms level=MS2" "collision energy=15 eV" "ionization=ESI" "resolution=12000" "column=Waters Acquity" "flow gradient=water/acetonitrile, 20 min" "retention time=319.5 sec" "precursor m/z=354.1345" "precursor type=[M+H]+" "ionization mode=positive" "computed mass accuracy=2.545055621467149" "computed mass error=9.012919999804581E-4" "SPLASH=splash10-0zfr-0029000000-56cd613ed65d5ccc0fc2" "submitter=CASMI Team (UFZ, Eawag)"
+Num Peaks: 48
+135.044090 1.001001
+161.059417 0.500501
+163.037921 0.600601
+173.058985 0.200200
+176.069933 0.200200
+188.069476 0.100100
+217.064262 0.200200
+235.074687 0.100100
+237.088827 0.200200
+245.058738 0.200200
+247.074622 4.604605
+248.077730 0.700701
+249.084970 0.100100
+263.069442 0.200200
+265.084928 1.101101
+266.086344 0.200200
+267.066777 0.200200
+275.069243 48.948949
+276.072457 8.708709
+277.075843 1.001001
+278.078822 0.100100
+279.064367 0.200200
+293.079939 1.901902
+294.082997 0.300300
+295.095169 7.107107
+296.098408 1.201201
+297.100602 0.100100
+303.063770 1.501502
+304.067777 0.300300
+305.079460 39.439439
+306.083071 7.607608
+307.089209 1.401401
+308.094266 0.200200
+323.089931 36.836837
+324.093193 6.906907
+325.096267 1.001001
+326.099525 0.100100
+334.105573 1.001001
+335.108811 0.200200
+336.121034 8.108108
+337.124388 1.701702
+338.127519 0.200200
+352.116235 5.105105
+353.119072 1.201201
+354.132312 100.000000
+355.135060 20.820821
+356.137434 2.702703
+357.140093 0.300300
+
+
+Name: Kanamycin A
+Synon: $:00in-source
+DB#: SMI00011
+InChIKey: SBUJHOSQTJFQJX-NOAMYHISSA-N
+Precursor_type: [M+H]+
+Spectrum_type: MS2
+PrecursorMZ: 485.245
+Instrument_type: LC-ESI-QTOF
+Instrument: Bruker micrOTOF-Q
+Ion_mode: P
+Collision_energy: 10 eV
+Formula: C18H36N4O11
+MW: 484
+ExactMass: 484.238057972
+Comments: "SMILES=C1[C@H]([C@@H]([C@H]([C@@H]([C@H]1N)O[C@@H]2[C@@H]([C@H]([C@@H]([C@H](O2)CN)O)O)O)O)O[C@@H]3[C@@H]([C@H]([C@@H]([C@H](O3)CO)O)N)O)N" "pubchem cid=6032" "chemspider=5810" "InChI=InChI=1S/C18H36N4O11/c19-2-6-10(25)12(27)13(28)18(30-6)33-16-5(21)1-4(20)15(14(16)29)32-17-11(26)8(22)9(24)7(3-23)31-17/h4-18,23-29H,1-3,19-22H2/t4-,5+,6-,7-,8+,9-,10-,11-,12+,13-,14-,15+,16-,17-,18-/m1/s1" "computed SMILES=OCC1OC(OC2C(O)C(OC3OC(CN)C(O)C(O)C3O)C(N)CC2N)C(O)C(N)C1O" "accession=SMI00011" "author=S. Neumann: IPB-Halle, Germany & E. Schymanski: Eawag, Switzerland" "license=CC BY" "copyright=CASMI2012" "publication=Schymanski, E.; Neumann, S. The Critical Assessment of Small Molecule Identification (CASMI): Challenges and Solutions. Metabolites 2013, 3 (3), 517â€“38. DOI:10.3390/metabo3030517" "exact mass=484.238" "instrument=Bruker micrOTOF-Q" "instrument type=LC-ESI-QTOF" "ms level=MS2" "collision energy=10 eV" "ionization=ESI" "resolution=12000" "column=Waters Acquity" "flow gradient=water/acetonitrile" "retention time=22 sec" "precursor m/z=485.245" "precursor type=[M+H]+" "ionization mode=positive" "computed mass accuracy=0.6882543868858682" "computed mass error=-3.3397199996443305E-4" "SPLASH=splash10-0229-0829000000-78bb959489d1e9f9158e" "submitter=CASMI Team (UFZ, Eawag)"
+Num Peaks: 19
+115.039358 4.841709
+126.054771 1.953541
+127.040288 1.269306
+144.065103 22.018246
+145.066736 2.041550
+162.076100 40.180232
+163.106634 39.712919
+164.109231 3.150953
+205.119124 14.056573
+206.121712 1.359794
+243.127800 14.418524
+243.629221 3.262513
+288.154897 0.867690
+306.163434 0.769765
+324.177677 100.000000
+325.180693 15.345712
+326.182655 2.785284
+348.178211 0.989166
+366.185665 1.317649
+
+
+Name: Kanamycin A
+Synon: $:00in-source
+DB#: SMI00012
+InChIKey: SBUJHOSQTJFQJX-NOAMYHISSA-N
+Precursor_type: [M+H]+
+Spectrum_type: MS2
+PrecursorMZ: 485.245
+Instrument_type: LC-ESI-QTOF
+Instrument: Bruker micrOTOF-Q
+Ion_mode: P
+Collision_energy: 20 eV
+Formula: C18H36N4O11
+MW: 484
+ExactMass: 484.238057972
+Comments: "SMILES=C1[C@H]([C@@H]([C@H]([C@@H]([C@H]1N)O[C@@H]2[C@@H]([C@H]([C@@H]([C@H](O2)CN)O)O)O)O)O[C@@H]3[C@@H]([C@H]([C@@H]([C@H](O3)CO)O)N)O)N" "pubchem cid=6032" "chemspider=5810" "InChI=InChI=1S/C18H36N4O11/c19-2-6-10(25)12(27)13(28)18(30-6)33-16-5(21)1-4(20)15(14(16)29)32-17-11(26)8(22)9(24)7(3-23)31-17/h4-18,23-29H,1-3,19-22H2/t4-,5+,6-,7-,8+,9-,10-,11-,12+,13-,14-,15+,16-,17-,18-/m1/s1" "computed SMILES=OCC1OC(OC2C(O)C(OC3OC(CN)C(O)C(O)C3O)C(N)CC2N)C(O)C(N)C1O" "accession=SMI00012" "author=S. Neumann: IPB-Halle, Germany & E. Schymanski: Eawag, Switzerland" "license=CC BY" "copyright=CASMI2012" "publication=Schymanski, E.; Neumann, S. The Critical Assessment of Small Molecule Identification (CASMI): Challenges and Solutions. Metabolites 2013, 3 (3), 517â€“38. DOI:10.3390/metabo3030517" "exact mass=484.238" "instrument=Bruker micrOTOF-Q" "instrument type=LC-ESI-QTOF" "ms level=MS2" "collision energy=20 eV" "ionization=ESI" "resolution=12000" "column=Waters Acquity" "flow gradient=water/acetonitrile" "retention time=22 sec" "precursor m/z=485.245" "precursor type=[M+H]+" "ionization mode=positive" "computed mass accuracy=0.6882543868858682" "computed mass error=-3.3397199996443305E-4" "SPLASH=splash10-03di-0910000000-320fee58379d18150c61" "submitter=CASMI Team (UFZ, Eawag)"
+Num Peaks: 17
+97.026459 2.953896
+102.053661 5.492438
+114.055068 2.247795
+115.039348 13.257104
+120.065158 2.074324
+126.055163 5.040436
+144.065170 25.859415
+145.094088 7.789098
+146.081499 2.550759
+162.075920 31.459356
+163.107469 100.000000
+187.107758 8.079846
+205.118756 25.610203
+206.121227 2.799971
+241.118166 1.258277
+288.156619 1.737155
+324.177987 3.120037
+
