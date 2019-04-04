@@ -93,11 +93,18 @@
 }
 
 
+.massbank.rule_write.block <- function(content)
+{
+  paste(names(content), content)
+}
+
 
 
 parserMassBank <- list(
   render = NULL,
-  rules_render = NULL,
+  rules_render = list(
+    "block" = .massbank.rule_write.block
+  ),
   read = .massbank.readFile,
   rules_read = list(
 #    "default" = function(content) content,
@@ -126,13 +133,15 @@ applySchema <- function(record, schema, parser)
   # for every element in schema$metadata:
   # if "rule" is NULL, rule <- default
   # parser$rules_read[[rule]](.recurse_access(rawRecord, trace))
-  # if "node" is not NULL
+  # if "node" is not NULL, recurse
   .recurseFields <- function(element, data)
   {
     #trace <- c(trace, element$field)
     #field <- .recurse_access(record, trace)
     #field <- data[[element$field]]
     field <- unlist(data[names(data) == element$field])
+    # consider removing this, so names would be downported into the arrays. 
+    # Maybe even put the trace here
     names(field) <- NULL
     if(!is.null(element$rule))
       field <- parser$rules_read[[element$rule]](field)
@@ -151,6 +160,37 @@ applySchema <- function(record, schema, parser)
   return(record)
 }
 
+renderSchema <- function(record, schema, parser)
+{
+  # go through metadata specification
+  # for every element in schema$metadata:
+  # when reading, first apply rule, then recurse nodes,
+  # here we are writing, so first recurse nodes, then apply rule
+
+  .recurseFields <- function(element, data)
+  {
+    #trace <- c(trace, element$field)
+    #field <- .recurse_access(record, trace)
+    field <- data[[element$field]]
+    #field <- unlist(data[names(data) == element$field])
+
+    if(!is.null(element$node))
+    {
+      field <- lapply(element$node, .recurseFields, field)
+      names(field) <- unlist(lapply(element$node, `[[`, 'field'))
+      field <- field[!unlist(lapply(field, is.null))]
+    } 
+    if(!is.null(element$rule))
+      field <- parser$rules_render[[element$rule]](field)
+    return(unlist(field))
+  }
+  schema_root <- schema$metadata
+  record <- lapply(schema_root, .recurseFields, record)
+  names(record) <- unlist(lapply(schema_root, `[[`, 'field'))
+  record <- record[!unlist(lapply(record, is.null))]
+  return(record)
+}
+
 .massbank.writeLines <- function(record)
 {
   buffer <- c()
@@ -159,7 +199,7 @@ applySchema <- function(record, schema, parser)
     # find tag name and values
     tag <- names(record)[[i]]
     entry <- record[[i]]
-    # find multiline values and join
+    # paste title to first line in multiline entries
     entry[1] <- paste(tag, entry[1], sep=": ")
     buffer <- c(buffer, entry)
   }
