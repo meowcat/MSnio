@@ -20,7 +20,7 @@
   {
     if(substr(line, 1,2) != '  ')
     {
-      record <- processBuffer(record, buffer)
+      record <- .massbank.processBuffer(record, buffer)
       buffer <- c()
     }
     buffer <- c(buffer, line)
@@ -59,12 +59,14 @@
   regex_titleline <- '(.*?): (.*)'
   title <- sub(regex_titleline, '\\1', lines[1])
   line_rest <- sub(regex_titleline, '\\2', lines[1])
-  content <- c(line_rest, lines[-1])
-  entry <- record[[title]]
-  if(is.null(entry))
-    entry <- c()
-  entry <- c(entry, content)
-  record[[title]] <- entry
+  content <- list(c(line_rest, lines[-1]))
+  # entry <- record[[title]]
+  # if(is.null(entry))
+  #   entry <- c()
+  # entry <- c(entry, content)
+  # record[[title]] <- entry
+  names(content) <- title
+  record <- c(record, content)
   return(record)
 }
 
@@ -148,3 +150,19 @@ applySchema <- function(record, schema, parser)
   record <- record[!unlist(lapply(record, is.null))]
   return(record)
 }
+
+.massbank.writeLines <- function(record)
+{
+  buffer <- c()
+  for(i in seq_along(record))
+  {
+    # find tag name and values
+    tag <- names(record)[[i]]
+    entry <- record[[i]]
+    # find multiline values and join
+    entry[1] <- paste(tag, entry[1], sep=": ")
+    buffer <- c(buffer, entry)
+  }
+  return(buffer)
+}
+
