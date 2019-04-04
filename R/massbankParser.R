@@ -1,17 +1,17 @@
-file <- "inst/spectra/massbank/EA016614.txt"
-lines_test <- readLines(file)
-schema <- yaml.load_file("inst/schemas/schema_massbank_auto.yaml")
-fields <- yaml.load_file("inst/schemas/fields.yaml")
+# file <- "inst/spectra/massbank/EA016614.txt"
+# lines_test <- readLines(file)
+# schema <- yaml.load_file("inst/schemas/schema_massbank_auto.yaml")
+# fields <- yaml.load_file("inst/schemas/fields.yaml")
+# 
 
-
-buildSkeleton <- function(schema, fields)
-{
-  field_names <- unlist(lapply(fields, `[[`, "field"))
-  names(fields) <- field_names
-  skeleton <- schema
-  
-}
-
+#' MassBank parser - line parser
+#'
+#' @param lines Character vector with the record in line-by-line format.
+#'
+#' @return List of root-level tag entries (name: tag name, content: unprocessed tag value)
+#' @export
+#'
+#' @examples
 .massbank.readFile <- function(lines)
 {
   buffer <- c()
@@ -35,6 +35,23 @@ buildSkeleton <- function(schema, fields)
   return(record)
 }
 
+#' MassBank parser - line buffer processing
+#' 
+#' This receives a single or multiple line entry
+#' (MassBank multiline entries continue the preceding
+#' line with starting whitespace, see record spec.)
+#' 
+#' It parses the multiline buffer into tag name and 
+#' vector of lines, without further processing, and updates
+#' the record accordingly.
+#'
+#' @param record 
+#' @param lines 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 .massbank.processBuffer <- function(record, lines)
 {
   if(length(lines) == 0)
@@ -50,6 +67,7 @@ buildSkeleton <- function(schema, fields)
   record[[title]] <- entry
   return(record)
 }
+
 
 .massbank.rule_read.block <- function(content)
 {
@@ -71,6 +89,8 @@ buildSkeleton <- function(schema, fields)
   content <- read.csv(text=content, sep=' ')
   return(content)
 }
+
+
 
 
 parserMassBank <- list(
@@ -109,7 +129,9 @@ applySchema <- function(record, schema, parser)
   {
     #trace <- c(trace, element$field)
     #field <- .recurse_access(record, trace)
-    field <- data[[element$field]]
+    #field <- data[[element$field]]
+    field <- unlist(data[names(data) == element$field])
+    names(field) <- NULL
     if(!is.null(element$rule))
       field <- parser$rules_read[[element$rule]](field)
     if(!is.null(element$node))
