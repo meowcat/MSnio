@@ -28,6 +28,7 @@ metadata:
 - field: CH$IUPAC
   map: inchi
 - field: CH$LINK
+  rule: block
   map: database_identifier
   deep_map:
   - field: INCHIKEY
@@ -45,6 +46,7 @@ metadata:
 - field: AC$INSTRUMENT_TYPE
   map: instrument_type
 - field: AC$MASS_SPECTROMETRY
+  rule: block
   node:
   - field: MS_TYPE
     map: ms_level
@@ -71,6 +73,7 @@ metadata:
   - field: SCANNING
     map: scanning
 - field: AC$CHROMATOGRAPHY
+  rule: block
   node:
   - field: CAPILLARY_VOLTAGE
     map: capillary_voltage
@@ -87,6 +90,7 @@ metadata:
   - field: SOLVENT
     map: solvent
 - field: MS$FOCUSED_ION
+  rule: block
   node:
   - field: BASE_PEAK
     map: base_peak
