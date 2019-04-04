@@ -15,6 +15,7 @@ metadata:
   map: publication
 - field: COMMENT
   map: comment
+  rule: block
 - field: CH$NAME
   map: name
 - field: CH$COMPOUND_CLASS
@@ -89,6 +90,7 @@ metadata:
     map: retention_time
   - field: SOLVENT
     map: solvent
+    rule: block
 - field: MS$FOCUSED_ION
   rule: block
   node:
@@ -108,6 +110,7 @@ metadata:
     map: precursor_adduct
 - field: MS$DATA_PROCESSING
   map: processing
+  rule: block
 - field: PK$SPLASH
   map: splash
 #- field: PK$ANNOTATION
