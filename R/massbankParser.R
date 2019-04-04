@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-.massbank.readFile <- function(lines)
+.massbankParseRecord <- function(lines)
 {
   buffer <- c()
   record <- list()
@@ -20,12 +20,12 @@
   {
     if(substr(line, 1,2) != '  ')
     {
-      record <- .massbank.processBuffer(record, buffer)
+      record <- .massbankParseProcessBuffer(record, buffer)
       buffer <- c()
     }
     buffer <- c(buffer, line)
   }
-  record <- .massbank.processBuffer(record, buffer)
+  record <- .massbankParseProcessBuffer(record, buffer)
   # recordNames <- names(record)
   # record <- lapply(seq_along(record), function(i)
   #   processBlocks(record[[i]], recordNames[[i]], schema))
@@ -52,7 +52,7 @@
 #' @export
 #'
 #' @examples
-.massbank.processBuffer <- function(record, lines)
+.massbankParseProcessBuffer <- function(record, lines)
 {
   if(length(lines) == 0)
     return(record)
@@ -71,7 +71,7 @@
 }
 
 
-.massbank.rule_read.block <- function(content)
+.massbankRuleParseBlock <- function(content)
 {
   regex_blockline <- '(.*?) (.*)'
   blockData <- lapply(content, function(line) {
@@ -85,7 +85,7 @@
   return(content)
 }
 
-.massbank.rule_read.table <- function(content)
+.massbankRuleParseTable <- function(content)
 {
   content <- gsub("^( +)", "", content)
   content <- read.csv(text=content, sep=' ')
@@ -93,41 +93,12 @@
 }
 
 
-.massbank.rule_write.block <- function(content)
+.massbankRuleRenderBlock <- function(content)
 {
   paste(names(content), content)
 }
 
-
-
-parserMassBank <- list(
-  render = NULL,
-  rules_render = list(
-    "block" = .massbank.rule_write.block
-  ),
-  read = .massbank.readFile,
-  rules_read = list(
-#    "default" = function(content) content,
-    "table" = .massbank.rule_read.table,
-    "block" = .massbank.rule_read.block
-  )
-)
-
-
-.recurse_access <- function(data, trace)
-{
-  if(length(trace) == 0)
-    stop("Trace is absent")
-  if(length(trace) == 1)
-    return(data[[trace]])
-  else
-    if(is.list(data[[trace[[1]]]]))
-      return(.recurse_access(data[[trace[1]]], trace[-1]))
-  else
-    return(NULL)
-}
-
-applySchema <- function(record, schema, parser)
+parseSchema <- function(record, schema, parser)
 {
   # go through metadata specification
   # for every element in schema$metadata:
@@ -145,7 +116,7 @@ applySchema <- function(record, schema, parser)
     # Maybe even put the trace here
     names(field) <- NULL
     if(!is.null(element$rule))
-      field <- parser$rules_read[[element$rule]](field)
+      field <- parser$rulesParse[[element$rule]](field)
     if(!is.null(element$node))
     {
       field <- lapply(element$node, .recurseFields, field)
@@ -154,9 +125,9 @@ applySchema <- function(record, schema, parser)
     } 
     return(field)
   }
-  schema_root <- schema$metadata
-  record <- lapply(schema_root, .recurseFields, record)
-  names(record) <- unlist(lapply(schema_root, `[[`, 'field'))
+  schemaRoot <- schema$metadata
+  record <- lapply(schemaRoot, .recurseFields, record)
+  names(record) <- unlist(lapply(schemaRoot, `[[`, 'field'))
   record <- record[!unlist(lapply(record, is.null))]
   return(record)
 }
@@ -167,9 +138,6 @@ renderSchema <- function(record, schema, parser)
   # for every element in schema$metadata:
   # when reading, first apply rule, then recurse nodes,
   # here we are writing, so first recurse nodes, then apply rule
-  
-  # we need a helper to fix the naming, currently, because I have no better idea
-  name_helper <- "&"
   
   .recurseFields <- function(element, data)
   {
@@ -188,14 +156,14 @@ renderSchema <- function(record, schema, parser)
       #field <- unlist(field)
     } 
     if(!is.null(element$rule))
-      field <- unlist(parser$rules_render[[element$rule]](field))
+      field <- unlist(parser$rulesRender[[element$rule]](field))
     # the following "default rule" actually reverses the behaviour of 
     # "field <- unlist(data[names(data) == element$field])"
     # in the parser step
     names(field) <- rep(element$field,length(field))
     return(field)
   }
-  schema_root <- schema$metadata
+  schemaRoot <- schema$metadata
   record <- lapply(schema_root, .recurseFields, record)
   names(record) <- unlist(lapply(schema_root, `[[`, 'field'))
   record <- record[!unlist(lapply(record, is.null))]
@@ -204,7 +172,7 @@ renderSchema <- function(record, schema, parser)
   return(record)
 }
 
-.massbank.writeLines <- function(record)
+.massbankRenderRecord <- function(record)
 {
   buffer <- c()
   for(i in seq_along(record))
@@ -219,3 +187,17 @@ renderSchema <- function(record, schema, parser)
   return(buffer)
 }
 
+
+
+parserMassBank <- list(
+  render = .massbankRenderRecord,
+  rulesRender = list(
+    "block" = .massbankRuleRenderBlock
+  ),
+  parse = .massbankParseRecord,
+  rulesParse = list(
+    #    "default" = function(content) content,
+    "table" = .massbankRuleParseTable,
+    "block" = .massbankRuleParseBlock
+  )
+)
