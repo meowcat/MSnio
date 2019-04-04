@@ -28,6 +28,8 @@ library(yaml)
 
 ```
 
+NOTE: all of this is just proof-of-concept and will be dropped!!!
+
 Processing some data:
 ```{r processing, cache=FALSE, echo=FALSE}
 

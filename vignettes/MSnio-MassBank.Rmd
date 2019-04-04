@@ -1,0 +1,67 @@
+---
+title: 'MSnio: MassBank parser'
+author: "Michele Stravs"
+date: "4 April 2019"
+output:
+  BiocStyle::html_document:
+    toc_float: true
+vignette: >
+  %\VignetteIndexEntry{MSnio: Import, export and transformation of spectral data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %%\VignetteKeywords{Mass Spectrometry, MS, MSMS, Metabolomics, Infrastructure, Bioinformatics, quantitative }
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r style, echo = FALSE, results = 'asis'}
+BiocStyle::markdown()
+```
+Loading the package:
+```{r environment, cache=FALSE, echo=FALSE}
+library(MSnio)
+library(MSnbase)
+library(yaml)
+
+
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Parsing MassBank record from a file
+
+
+```{r MassBank-render}
+  # Generate a parser (Todo: maybe S4 class or anything that is less 
+  # questionable than my current construct)
+  parser <- parserMassBank()
+
+  # load file into character array
+  spectrumFile <- system.file("spectra/massbank/EA016614.txt", package="MSnio")
+  spectrumText <- readLines(spectrumFile)
+  
+  # load MassBank schema
+  schema <- yaml.load_file(system.file("schemas/schema_massbank_auto.yaml", package="MSnio"))
+  
+  
+  # file to "tag token record"
+  # (todo: potentially replace by a lexer, there are only 2 rules)
+  recordTokens <- parser$parseRecord(spectrumText)
+  # "tag token record" to structured record
+  # (again, a better solution than passing the parser to itself is needed)
+  record <- parser$parseSchema(recordTokens, schema, parser)
+```
+
+# Rendering a MassBank record to a file
+
+
+```{r MassBank-parse}
+
+  
+  # record to "tag token record"
+  renderedTokens <- parser$renderSchema(record, schema, parser)
+  # "tag token record" to text for fiile
+  
+  renderedText <- parser$renderRecord(renderedTokens)
+```

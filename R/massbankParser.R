@@ -98,7 +98,7 @@
   paste(names(content), content)
 }
 
-parseSchema <- function(record, schema, parser)
+.massbankParseSchema <- function(record, schema, parser)
 {
   # go through metadata specification
   # for every element in schema$metadata:
@@ -132,7 +132,7 @@ parseSchema <- function(record, schema, parser)
   return(record)
 }
 
-renderSchema <- function(record, schema, parser)
+.massbankRenderSchema <- function(record, schema, parser)
 {
   # go through metadata specification
   # for every element in schema$metadata:
@@ -164,8 +164,8 @@ renderSchema <- function(record, schema, parser)
     return(field)
   }
   schemaRoot <- schema$metadata
-  record <- lapply(schema_root, .recurseFields, record)
-  names(record) <- unlist(lapply(schema_root, `[[`, 'field'))
+  record <- lapply(schemaRoot, .recurseFields, record)
+  names(record) <- unlist(lapply(schemaRoot, `[[`, 'field'))
   record <- record[!unlist(lapply(record, is.null))]
   record <- as.list(do.call(c, c(record, use.names=FALSE)))
   
@@ -189,15 +189,25 @@ renderSchema <- function(record, schema, parser)
 
 
 
-parserMassBank <- list(
-  render = .massbankRenderRecord,
+#' Generate a MassBank record parser
+#' 
+#' @return
+#' @export
+#'
+#' @examples
+parserMassBank <- function()
+{
+  list(
+  renderRecord = .massbankRenderRecord,
+  renderSchema = .massbankRenderSchema,
   rulesRender = list(
     "block" = .massbankRuleRenderBlock
   ),
-  parse = .massbankParseRecord,
+  parseRecord = .massbankParseRecord,
+  parseSchema = .massbankParseSchema,
   rulesParse = list(
     #    "default" = function(content) content,
     "table" = .massbankRuleParseTable,
     "block" = .massbankRuleParseBlock
   )
-)
+)}
