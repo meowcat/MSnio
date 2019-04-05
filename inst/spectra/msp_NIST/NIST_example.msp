@@ -1,0 +1,78 @@
+Name: 3-Hydroxy-3-(2-(2-hydroxyphenyl)-2-oxoethyl)-1,3-dihydro-2H-indol-2-one
+Synon: 2H-Indol-2-one, 1,3-dihydro-3-hydroxy-3-[2-(2-hydroxyphenyl)-2-oxoethyl]-
+Notes: mol_Vial_ID=1000001
+Precursor_type: [M+H]+
+Spectrum_type: MS2
+PrecursorMZ: 284.0917
+Instrument_type: IT/ion trap
+Instrument: Thermo Finnigan LCQ Deca
+Sample_inlet: HPLC
+Ionization: ESI
+Collision_energy: resonant relative/normalized 35 %
+Ion_mode: P
+Special_fragmentation: wideband
+InChIKey: UAEJHGCEFAFLIJ-UHFFFAOYSA-N
+Formula: C16H13NO4
+MW: 283
+ExactMass: 283.084457
+CASNO: 85778456
+NISTNO: 1000001
+ID: 1
+Comment: Provided by Thermo Finnigan, measured by John Halket, Centre for Chemical Sciences, University of London
+Num peaks: 3
+1 100
+2 200
+10 999
+
+Name: 5-(4-Ethoxybenzylidene)-2-(4-morpholinyl)-1,3-thiazol-4(5H)-one
+Synon: 4(5H)-Thiazolone, 5-[(4-ethoxyphenyl)methylene]-2-(4-morpholinyl)-
+Notes: mol_Vial_ID=1000002
+Precursor_type: [M+H]+
+Spectrum_type: MS2
+PrecursorMZ: 319.1111
+Instrument_type: IT/ion trap
+Instrument: Thermo Finnigan LCQ Deca
+Sample_inlet: HPLC
+Ionization: ESI
+Collision_energy: resonant relative/normalized 35 %
+Ion_mode: P
+Special_fragmentation: wideband
+InChIKey: SYKSUKDZLCWNCF-KAMYIIQDSA-N
+Formula: C16H18N2O3S
+MW: 318
+ExactMass: 318.103813
+CASNO: 298217455
+NISTNO: 1000002
+ID: 2
+Comment: Provided by Thermo Finnigan, measured by John Halket, Centre for Chemical Sciences, University of London
+Num peaks: 3
+1 100
+2 200
+10 999
+
+Name: 1-(4-Nitro)-3-((2-(3-methylphenoxy)ethyl)amino)phenyl)pyrrolidine
+Synon: Benzenamine, N-[2-(3-methylphenoxy)ethyl]-2-nitro-5-(1-pyrrolidinyl)-
+Notes: mol_Vial_ID=1000003
+Precursor_type: [M+H]+
+Spectrum_type: MS2
+PrecursorMZ: 342.1812
+Instrument_type: IT/ion trap
+Instrument: Thermo Finnigan LCQ Deca
+Sample_inlet: HPLC
+Ionization: ESI
+Collision_energy: resonant relative/normalized 35 %
+Ion_mode: P
+Special_fragmentation: wideband
+InChIKey: IYECCJLABJLPSS-UHFFFAOYSA-N
+Formula: C19H23N3O3
+MW: 341
+ExactMass: 341.17394
+CASNO: 298217466
+NISTNO: 1000003
+ID: 3
+Comment: Provided by Thermo Finnigan, measured by John Halket, Centre for Chemical Sciences, University of London
+Num peaks: 3
+1 100
+2 200
+10 999
+
