@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CEF version="1.0.0.0">
+  <CompoundList instrumentConfiguration="">
+    <Compound mppid="2" algo="FindByMolecularFeature">
+      <Location m="521.34653" rt="6.317" y="217802048" dt="29.8594932556152" ccs="233.353897094727" />
+      <CompoundScores>
+        <CpdScore algo="mfe" score="93.7" />
+      </CompoundScores>
+      <Results>
+        <Molecule name="18:1 Lyso PC" formula="C26 H52 N O7 P">
+          <Database>
+            <Accession db="CAS ID" id="19420-56-5" />
+          </Database>
+        </Molecule>
+      </Results>
+      <Spectrum type="MFE" cpdAlgo="FindByMolecularFeature">
+        <MSDetails p="+" />
+        <Device type="QuadrupoleTimeOfFlight" />
+        <MSPeaks>
+          <p x="522.35380" y="217802048.00" z="1" s="M+H" />
+          <p x="523.35762" y="72250552.00" z="1" s="M+H+1" />
+          <p x="524.36069" y="12046152.00" z="1" s="M+H+2" />
+          <p x="525.36301" y="1452010.50" z="1" s="M+H+3" />
+        </MSPeaks>
+      </Spectrum>
+    </Compound>
+   </CompoundList>
+</CEF> 
