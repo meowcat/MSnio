@@ -211,3 +211,57 @@ parserMassBank <- function()
     "block" = .massbankRuleParseBlock
   )
 )}
+
+#' @title Massbank parser
+#'
+#' @description
+#'
+#' Parser for Massbank spectrum files.
+#'
+#' New objects are supposed to be created with the `MassbankParser` function.
+#'
+#' @author Michele Stravs, Johannes Rainer
+#' 
+#' @name MassbankParser
+#'
+#' @exportClass MassbankParser
+#'
+#' @examples
+#' library(MSnio)
+#'
+#' ## Create and intialize a parser
+#' prs <- MassbankParser()
+#'
+#' ## Spectrum file
+#' fl <- system.file("spectra/massbank/EA016614.txt", package="MSnio")
+#' res <- importSpectrum(prs, fl)
+setClass("MassbankParser",
+         contains = "SpectrumParser")
+
+#' @rdname MassbankParser
+setMethod("importSpectrum", "MassbankParser", function(object, file, ...) {
+    if (!file.exists(file))
+        stop("File ", file, " not found")
+    if (length(object@schema) == 0)
+        stop("Parser does not have any schema")
+    tkns <- .massbankParseRecord(readLines(file))
+    ## map to "standard" fields, return a Spectra/Spectrum/whatever
+    tkns
+})
+
+setValidity("MassbankParser", function(object) {
+    msg <- NULL
+    ## Would be nice to check the schema for correctness or similar.
+    if (length(msg)) msg
+    else TRUE
+})
+
+
+#' @rdname MassbankParser
+#'
+#' @export MassbankParser
+MassbankParser <- function() {
+    new("MassbankParser",
+        schema = yaml.load_file(system.file("schemas/schema_massbank_auto.yaml",
+                                            package="MSnio")))
+}

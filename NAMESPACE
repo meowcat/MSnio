@@ -2,8 +2,12 @@
 
 export(.massbankParseProcessBuffer)
 export(.massbankParseRecord)
+export(MassbankParser)
 export(parserMassBank)
 export(schema_export)
 export(schema_import)
+exportClasses(MassbankParser)
+exportClasses(SpectrumParser)
+exportMethods(importSpectrum)
 import(MSnbase)
 import(yaml)
