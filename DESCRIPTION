@@ -5,6 +5,7 @@ Version: 1.0
 Date: 2019-04-03
 Author: Who wrote it
 Maintainer: Who to complain to <yourfault@somewhere.net>
+Depends: MSnbase, yaml
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
 RoxygenNote: 6.1.1
