@@ -1,11 +1,11 @@
 Package: MSnio
 Type: Package
-Title: What the package does (short line)
+Title: Import and export of spectrum file formats
 Version: 1.0
 Date: 2019-04-03
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
+Author: Michele Stravs, Steffen Neumann, Michael Wittig, Hendrik Treutler
+Maintainer: Michele Stravs <michael.stravs@eawag.ch>
 Depends: MSnbase, yaml
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Description: Import and export of spectrum file formats based on MSnbase objects. This package implements adapters to parse various file formats such as .msp, .library, and .mgf. Parsed spectra are then represented by MSnbase spectrum objects and can be exported to the same set of file formats.
+License: Artistic-2.0
 RoxygenNote: 6.1.1
